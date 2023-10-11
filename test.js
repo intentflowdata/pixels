@@ -1,1 +1,1 @@
-<script> console.log("is this working?") </script>
+<script type="text/javascript"> console.log("is this working?") </script>
