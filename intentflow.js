@@ -28,18 +28,42 @@ if((document.location.href.search('appspot.com')==-1)&&(document.referrer.search
 //     script.src = pixelURL + escape(segmentValue);
 //     document.getElementsByTagName('script')[0].parentNode.appendChild(script);
 // }();
-// LeadRev.ai pixels for testing. We are also using the new format from Erik here.
+
+// EDIT 2023-11-10 @ 13:40 ON FRIDAY I AM ADDING IN A CHATGPT REWRITTEN PIXEL THAT SHOULD APPEND THE DATE TO THE SEGMENT VALUE AND PASS IT TO THE S3 FILES. 
+  // I AM ALSO COMMENTING OUT THE PIXEL CODE BELOW WHICH HAS BEEN FIRING UNTIL NOW. 
   var dynamicPixel = function() {
     var pixelURL = "https://sv.intentflow.net/px/smart/?c=2568f8ecdcf637a&seg=";
     var urlPath = window.location.href;
-    var segmentValue = urlPath;
+
+    // Get the current date
+    var currentDate = new Date();
+    // Format the date as "YYYY-MM-DD"
+    var dateString = currentDate.toISOString().split('T')[0];
+    
+    // Append the formatted date and two dashes to the URL path
+    var segmentValue = dateString + '--' + urlPath;
+
     var script = document.createElement('script');
-    if (pixelURL.indexOf("seg=") === -1) {
-        pixelURL = pixelURL + "seg=";
-    }
-    script.src = pixelURL + escape(segmentValue);
+    // The check for "seg=" is not necessary here as the pixelURL already contains it
+    // If the pixelURL structure ever changes, the check can be re-enabled
+
+    // Use encodeURIComponent to ensure the segmentValue is properly escaped
+    script.src = pixelURL + encodeURIComponent(segmentValue);
     document.getElementsByTagName('script')[0].parentNode.appendChild(script);
-}();
+}(); // This IIFE will run immediately
+
+// LeadRev.ai pixels for testing. We are also using the new format from Erik here. COMMENTED OUT 2023-11-10 SEE ABOVE NOTE
+//   var dynamicPixel = function() {
+//     var pixelURL = "https://sv.intentflow.net/px/smart/?c=2568f8ecdcf637a&seg=";
+//     var urlPath = window.location.href;
+//     var segmentValue = urlPath;
+//     var script = document.createElement('script');
+//     if (pixelURL.indexOf("seg=") === -1) {
+//         pixelURL = pixelURL + "seg=";
+//     }
+//     script.src = pixelURL + escape(segmentValue);
+//     document.getElementsByTagName('script')[0].parentNode.appendChild(script);
+// }();
   
 
     !function(){"use strict";var sdkBaseUrl="https://cdn.rudderlabs.com/beta/3.0.0-beta";var sdkName="rsa.min.js"
