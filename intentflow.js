@@ -37,8 +37,14 @@ if((document.location.href.search('appspot.com')==-1)&&(document.referrer.search
 
     // Get the current date
     var currentDate = new Date();
-    // Format the date as "YYYY-MM-DD"
-    var dateString = currentDate.toISOString().split('T')[0];
+    // Format the date and time as "YYYY-MM-DDTHH:mm:ss"
+    var dateString = currentDate.getFullYear() + '-' +
+    ('0' + (currentDate.getMonth() + 1)).slice(-2) + '-' +
+    ('0' + currentDate.getDate()).slice(-2) + 'T' +
+    ('0' + currentDate.getHours()).slice(-2) + ':' +
+    ('0' + currentDate.getMinutes()).slice(-2) + ':' +
+    ('0' + currentDate.getSeconds()).slice(-2);
+
     
     // Append the formatted date and two dashes to the URL path
     var segmentValue = dateString + '--' + urlPath;
