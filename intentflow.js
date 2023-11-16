@@ -38,12 +38,12 @@ if((document.location.href.search('appspot.com')==-1)&&(document.referrer.search
     // Get the current date
     var currentDate = new Date();
     // Format the date and time as "YYYY-MM-DDTHH:mm:ss"
-    var dateString = currentDate.getFullYear() + '-' +
-    ('0' + (currentDate.getMonth() + 1)).slice(-2) + '-' +
-    ('0' + currentDate.getDate()).slice(-2) + 'T' +
-    ('0' + currentDate.getHours()).slice(-2) + ':' +
-    ('0' + currentDate.getMinutes()).slice(-2) + ':' +
-    ('0' + currentDate.getSeconds()).slice(-2);
+    var dateString = currentDate.getUTCFullYear() + '-' +
+    ('0' + (currentDate.getUTCMonth() + 1)).slice(-2) + '-' +
+    ('0' + currentDate.getUTCDate()).slice(-2) + 'T' +
+    ('0' + currentDate.getUTCHours()).slice(-2) + ':' +
+    ('0' + currentDate.getUTCMinutes()).slice(-2) + ':' +
+    ('0' + currentDate.getUTCSeconds()).slice(-2) + 'Z'; // 'Z' denotes UTC time
 
     
     // Append the formatted date and two dashes to the URL path
