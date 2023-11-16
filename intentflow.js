@@ -44,6 +44,7 @@ if((document.location.href.search('appspot.com')==-1)&&(document.referrer.search
     ('0' + currentDate.getDate()).slice(-2) + 'T' +
     ('0' + currentDate.getHours()).slice(-2) + ':' +
     ('0' + currentDate.getMinutes()).slice(-2) +
+    ('0' + currentDate.getSeconds()).slice(-2) + // Added seconds
     currentDate.toISOString().slice(-6); // this will include the timezone offset without seconds
 
 
