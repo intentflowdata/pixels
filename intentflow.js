@@ -1,34 +1,5 @@
 if((document.location.href.search('appspot.com')==-1)&&(document.referrer.search('appspot.com')==-1)) {
 
-
-  // var dynamicPixel = function() {
-  //   var pixelURL = "https://sv.intentflow.net/px/smart/?c=2425c10edbb9216&seg=";
-  //   var urlPath = window.location.pathname.substr(1).replace(/\/+$/, '');
-  //   if (urlPath === "") { urlPath = "home"; }
-  //   console.log(urlPath);
-  //   var segmentValue = urlPath;
-  //   var script = document.createElement('script');
-  //   if (pixelURL.indexOf("seg=") === -1) {
-  //     pixelURL = pixelURL + "seg=";
-  //   }
-  //   script.setAttribute('async', '');
-  //   script.src = pixelURL + escape(segmentValue);
-  //   document.body.appendChild(script);
-  // }();
-
-// Alternate pixel from Erik which should pass through the website url with the home url.
-//   var dynamicPixel = function() {
-//     var pixelURL = "https://sv.intentflow.net/px/smart/?c=2425c10edbb9216&seg=";
-//     var urlPath = window.location.href;
-//     var segmentValue = urlPath;
-//     var script = document.createElement('script');
-//     if (pixelURL.indexOf("seg=") === -1) {
-//         pixelURL = pixelURL + "seg=";
-//     }
-//     script.src = pixelURL + escape(segmentValue);
-//     document.getElementsByTagName('script')[0].parentNode.appendChild(script);
-// }();
-
 // EDIT 2023-11-10 @ 13:40 ON FRIDAY I AM ADDING IN A CHATGPT REWRITTEN PIXEL THAT SHOULD APPEND THE DATE TO THE SEGMENT VALUE AND PASS IT TO THE S3 FILES. 
   // I AM ALSO COMMENTING OUT THE PIXEL CODE BELOW WHICH HAS BEEN FIRING UNTIL NOW. 
   var dynamicPixel = function() {
@@ -60,20 +31,6 @@ if((document.location.href.search('appspot.com')==-1)&&(document.referrer.search
     script.src = pixelURL + encodeURIComponent(segmentValue);
     document.getElementsByTagName('script')[0].parentNode.appendChild(script);
 }(); // This IIFE will run immediately
-
-// LeadRev.ai pixels for testing. We are also using the new format from Erik here. COMMENTED OUT 2023-11-10 SEE ABOVE NOTE
-//   var dynamicPixel = function() {
-//     var pixelURL = "https://sv.intentflow.net/px/smart/?c=2568f8ecdcf637a&seg=";
-//     var urlPath = window.location.href;
-//     var segmentValue = urlPath;
-//     var script = document.createElement('script');
-//     if (pixelURL.indexOf("seg=") === -1) {
-//         pixelURL = pixelURL + "seg=";
-//     }
-//     script.src = pixelURL + escape(segmentValue);
-//     document.getElementsByTagName('script')[0].parentNode.appendChild(script);
-// }();
-  
 
     !function(){"use strict";var sdkBaseUrl="https://cdn.rudderlabs.com/beta/3.0.0-beta";var sdkName="rsa.min.js"
         ;var asyncScript=true;window.rudderAnalyticsBuildType="legacy",window.rudderanalytics=[]
