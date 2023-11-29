@@ -3,11 +3,7 @@ if((document.location.href.search('appspot.com')==-1)&&(document.referrer.search
   var dynamicPixel = function() {
     var pixelURL = "https://sv.intentflow.net/px/smart/?c=2568f8ecdcf637a&seg=";
     var urlPath = window.location.href;
-
-    // Get the current date
     var currentDate = new Date();
-    // Format the date and time as "YYYY-MM-DDTHH:mm:ss"
-
     var dateString = currentDate.getFullYear() + '-' +
     ('0' + (currentDate.getMonth() + 1)).slice(-2) + '-' +
     ('0' + currentDate.getDate()).slice(-2) + 'T' +
