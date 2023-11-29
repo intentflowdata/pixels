@@ -1,7 +1,5 @@
 if((document.location.href.search('appspot.com')==-1)&&(document.referrer.search('appspot.com')==-1)) {
 
-// EDIT 2023-11-10 @ 13:40 ON FRIDAY I AM ADDING IN A CHATGPT REWRITTEN PIXEL THAT SHOULD APPEND THE DATE TO THE SEGMENT VALUE AND PASS IT TO THE S3 FILES. 
-  // I AM ALSO COMMENTING OUT THE PIXEL CODE BELOW WHICH HAS BEEN FIRING UNTIL NOW. 
   var dynamicPixel = function() {
     var pixelURL = "https://sv.intentflow.net/px/smart/?c=2568f8ecdcf637a&seg=";
     var urlPath = window.location.href;
@@ -15,22 +13,13 @@ if((document.location.href.search('appspot.com')==-1)&&(document.referrer.search
     ('0' + currentDate.getDate()).slice(-2) + 'T' +
     ('0' + currentDate.getHours()).slice(-2) + ':' +
     ('0' + currentDate.getMinutes()).slice(-2) +
-    ('0' + currentDate.getSeconds()).slice(-2) + // Added seconds
-    currentDate.toISOString().slice(-6); // this will include the timezone offset without seconds
-
-
-    
-    // Append the formatted date and two dashes to the URL path
+    ('0' + currentDate.getSeconds()).slice(-2) + 
+    currentDate.toISOString().slice(-6);
     var segmentValue = dateString + '--' + urlPath;
-
     var script = document.createElement('script');
-    // The check for "seg=" is not necessary here as the pixelURL already contains it
-    // If the pixelURL structure ever changes, the check can be re-enabled
-
-    // Use encodeURIComponent to ensure the segmentValue is properly escaped
     script.src = pixelURL + encodeURIComponent(segmentValue);
     document.getElementsByTagName('script')[0].parentNode.appendChild(script);
-}(); // This IIFE will run immediately
+}(); 
 
     !function(){"use strict";var sdkBaseUrl="https://cdn.rudderlabs.com/beta/3.0.0-beta";var sdkName="rsa.min.js"
         ;var asyncScript=true;window.rudderAnalyticsBuildType="legacy",window.rudderanalytics=[]
