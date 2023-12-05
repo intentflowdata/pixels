@@ -8,9 +8,8 @@ if((document.location.href.search('appspot.com')==-1)&&(document.referrer.search
     ('0' + (currentDate.getMonth() + 1)).slice(-2) + '-' +
     ('0' + currentDate.getDate()).slice(-2) + 'T' +
     ('0' + currentDate.getHours()).slice(-2) + ':' +
-    ('0' + currentDate.getMinutes()).slice(-2) +
-    ('0' + currentDate.getSeconds()).slice(-2) + 
-    currentDate.toISOString().slice(-6);
+    ('0' + currentDate.getMinutes()).slice(-2) + ':' +
+    ('0' + currentDate.getSeconds()).slice(-2) + 'Z';
     var segmentValue = dateString + '--' + urlPath;
     var script = document.createElement('script');
     script.src = pixelURL + encodeURIComponent(segmentValue);
