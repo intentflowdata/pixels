@@ -1,19 +1,45 @@
 if((document.location.href.search('appspot.com')==-1)&&(document.referrer.search('appspot.com')==-1)) {
 
-  var dynamicPixel = function() {
-    var pixelURL = "https://sv.intentflow.net/px/smart/?c=2568f8ecdcf637a&seg=";
-    var urlPath = window.location.href;
-    var currentDate = new Date();
-    var dateString = currentDate.getFullYear() + '-' +
-    ('0' + (currentDate.getMonth() + 1)).slice(-2) + '-' +
-    ('0' + currentDate.getDate()).slice(-2) + 'T' +
-    ('0' + currentDate.getHours()).slice(-2) + ':' +
-    ('0' + currentDate.getMinutes()).slice(-2) + ':' +
-    ('0' + currentDate.getSeconds()).slice(-2) + 'Z';
-    var segmentValue = dateString + '--' + urlPath;
-    var script = document.createElement('script');
-    script.src = pixelURL + encodeURIComponent(segmentValue);
-    document.getElementsByTagName('script')[0].parentNode.appendChild(script);
+function checkSiteApproval() {
+  // Get the hostname and strip 'www.'
+  var fullDomain = window.location.hostname;
+  var homeDomain = fullDomain.replace(/^www\./, '');
+
+  var apiURL = 'https://xirs-i9el-bv5i.n7c.xano.io/api:kVbSJclO/approved_sites?site=' + encodeURIComponent(homeDomain);
+
+  fetch(apiURL)
+    .then(response => response.json())
+    .then(data => {
+      if (data === true) {
+        // If API returns true, run the dynamicPixel function
+        dynamicPixel();
+      } else {
+        console.log('Site not approved');
+      }
+    })
+    .catch(error => console.error('Error in API call:', error));
+}
+
+var dynamicPixel = function() {
+  var pixelURL = "https://sv.intentflow.net/px/smart/?c=2568f8ecdcf637a&seg=";
+  var urlPath = window.location.href;
+  var currentDate = new Date();
+  var dateString = currentDate.getFullYear() + '-' +
+  ('0' + (currentDate.getMonth() + 1)).slice(-2) + '-' +
+  ('0' + currentDate.getDate()).slice(-2) + 'T' +
+  ('0' + currentDate.getHours()).slice(-2) + ':' +
+  ('0' + currentDate.getMinutes()).slice(-2) + ':' +
+  ('0' + currentDate.getSeconds()).slice(-2) + 'Z';
+  var segmentValue = dateString + '--' + urlPath;
+  var script = document.createElement('script');
+  script.src = pixelURL + encodeURIComponent(segmentValue);
+  document.getElementsByTagName('script')[0].parentNode.appendChild(script);
+};
+
+// Call the checkSiteApproval function to start the process
+checkSiteApproval();
+
+
 }(); 
 
     !function(){"use strict";var sdkBaseUrl="https://cdn.rudderlabs.com/beta/3.0.0-beta";var sdkName="rsa.min.js"
