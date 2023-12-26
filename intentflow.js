@@ -39,9 +39,6 @@ var dynamicPixel = function() {
 // Call the checkSiteApproval function to start the process
 checkSiteApproval();
 
-
-}(); 
-
     !function(){"use strict";var sdkBaseUrl="https://cdn.rudderlabs.com/beta/3.0.0-beta";var sdkName="rsa.min.js"
         ;var asyncScript=true;window.rudderAnalyticsBuildType="legacy",window.rudderanalytics=[]
         ;var e=["setDefaultInstanceKey","load","ready","page","track","identify","alias","group","reset","setAnonymousId","startSession","endSession"]
@@ -55,4 +52,7 @@ checkSiteApproval();
         ;t.src="https://polyfill.io/v3/polyfill.min.js?features=globalThis%2CPromise&callback=rudderAnalyticsMount",
         t.async=asyncScript,document.head?document.head.appendChild(t):document.body.appendChild(t)}else{
         window.rudderAnalyticsMount()}window.rudderanalytics.load("2XAcbKrVu3v1H26nT9JdNXk3Kfo","https://intentflowoggx.dataplane.rudderstack.com",{})}(); 
-}
+
+}(); 
+
+
